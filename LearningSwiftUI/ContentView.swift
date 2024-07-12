@@ -8,14 +8,29 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var isAlertShow = false
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        
+           
+            NavigationStack{
+                
+                VStack {
+                    
+                    Button{
+                        isAlertShow = true
+                    }label: {
+                        Text("Tap for Alert!")
+                    }
+                    
+                }
+                .padding()
+            }.alert(isPresented: $isAlertShow, content: {
+                Alert(title: Text("Alert"), message: Text("This is an Alert"), primaryButton: .cancel(), secondaryButton: .default(Text("OK")))
+            })
+            
+           
+        
     }
 }
 
